@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fork Me! FCC: Test Suite Template</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Source Code Pro' rel='stylesheet'> 
+  </head>
+
+  <body>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <!-- <h1>Hello World!, we are software developers!</h1> -->
+    <script  src="js/index.js"></script>
+    <div id="title-header" style="margin-left: 350px;
+    font-size: 20px; padding: 25px; color: #E900FF;">
+      <h1>JavaScript reference</h1>
+    </div>
+    <nav id="navbar">
+      <header id="nav-header">
+        <h2>JS documentation</h2>
+      </header>
+      <a class="nav-link" href="#Built_ins">Built-ins</a>
+      <a class="nav-link" href="#Value_properties">Value properties</a>
+      <a class="nav-link" href="#Function_properties">Function properties</a>
+      <a class="nav-link" href="#Fundamental_objects">Fundamental objects</a>
+      <a class="nav-link" href="#Text_processing">Text processing</a>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Built_ins">
+        <header class="subtitle">
+          <h2>Built-ins</h2>
+        </header>
+
+      </section>
+      <section class="main-section" id="Value_properties">
+        <header class="subtitle">
+          <h2>Value properties</h2>
+        </header>
+        <ul>
+          <li><a href="#Value_properties">globalThis</a></li>
+          <p>The global <code>globalThis</code> property contains the global <code>this</code> value, which is akin to the global object.</p>
+          <li><a href="#Value_properties">Infinity</a></li>
+          <p>The global property <code>Infinity</code> is a numeric value representing infinity.</p>
+          <li><a href="#Value_properties">NaN</a></li>
+          <p>The global <code>NaN</code> property is a value representing Not-A-Number.</p>
+          <h4>Example:</h4>
+          <pre class="line-numbers">
+          <code>
+            function sanitise(x) {
+              if (isNaN(x)) {
+                return NaN;
+              }
+              return x;
+            }
+            
+            console.log(sanitise('1'));
+            // expected output: "1"
+            
+            console.log(sanitise('NotANumber'));
+            // expected output: NaN
+          </code>
+          </pre>
+          <li><a href="#Value_properties">undefined</a></li>
+          <p>The global <code>undefined</code> property represents the primitive value <a href="https://developer.mozilla.org/en-US/docs/Glossary/undefined">undefined</a>.</p>
+        </ul>
+      </section>
+      <section class="main-section" id="Function_properties">
+        <header class="subtitle">
+          <h2>Function properties</h2>
+        </header>
+        <ul>
+          <li><a href="#Function_properties">eval()</a></li>
+          <p>The eval() function evaluates JavaScript code represented as a string.</p>
+          <code>Warning: Executing JavaScript from a string is an enormous security risk. It is far too easy for a bad actor to run arbitrary code when you use eval(). </code>
+          <li><a href="#Function_properties">isFinite()</a></li>
+          <p>The global <code>isFinite()</code> function determines whether the passed value is a finite number. If needed, the parameter is first converted to a number. </p>
+          <h4>Example:</h4>
+          <pre class="line-numbers">
+          <code>
+            function div(x) {
+              if (isFinite(1000 / x)) {
+                return 'Number is NOT Infinity.';
+              }
+              return 'Number is Infinity!';
+            }
+            
+            console.log(div(0));
+            // expected output: "Number is Infinity!""
+            
+            console.log(div(1));
+            // expected output: "Number is NOT Infinity."
+            </code>
+            </pre>
+          <li><a href="#Function_properties">isNaN()</a></li>
+          <p>The <code>isNaN()</code> function determines whether a value is <a href="https://devdocs.io/javascript/global_objects/nan">NaN</a> or not.</p>
+          <h4>Example:</h4>
+          <pre class="line-numbers">
+          <code>
+            function milliseconds(x) {
+              if (isNaN(x)) {
+                return 'Not a Number!';
+              }
+              return x * 1000;
+            }
+            
+            console.log(milliseconds('100F'));
+            // expected output: "Not a Number!"
+            
+            console.log(milliseconds('0.0314E+2'));
+            // expected output: 3140
+          </code>
+          </pre>
+          <li><a href="#Function_properties">parseFloat()</a></li>
+          <p>The <code>parseFloat()</code> function parses an argument (converting it to a string first if needed) and returns a floating point number. </p>
+          <li><a href="#Function_properties">parseInt()</a></li>
+          <p>The <code>parseInt()</code> function parses a string argument and returns an integer of the specified <a href="https://en.wikipedia.org/wiki/Radix">radix</a> (the base in mathematical numeral systems). </p>
+          <li><a href="#Function_properties">decodeURI()</a></li>
+          <p>The <code>decodeURI()</code> function decodes a Uniform Resource Identifier (URI) previously created by encodeURI() or by a similar routine. </p>
+
+          <li><a href="#Function_properties">encodeURI()</a></li>
+          <p>The <code>encodeURI()</code> function encodes a <a href="https://developer.mozilla.org/en-US/docs/Glossary/URI">URI</a>
+            by replacing each instance of certain characters by one, two, three, or four escape sequences representing 
+            the <a href="https://developer.mozilla.org/en-US/docs/Glossary/UTF-8">UTF-8</a> encoding of the character 
+            (will only be four escape sequences for characters composed of two "surrogate" characters). </p>
+            <h4>Example:</h4>
+            <pre class="line-numbers">
+            <code>
+            const uri = 'https://mozilla.org/?x=шеллы';
+            const encoded = encodeURI(uri);
+            console.log(encoded);
+            // expected output: "https://mozilla.org/?x=%D1%88%D0%B5%D0%BB%D0%BB%D1%8B"
+            
+            try {
+              console.log(decodeURI(encoded));
+              // expected output: "https://mozilla.org/?x=шеллы"
+            } catch (e) { // catches a malformed URI
+              console.error(e);
+            }
+          </code>
+          </pre>
+        </ul>
+      </section>
+      <section class="main-section" id="Fundamental_objects">
+        <header class="subtitle">
+          <h2>Fundamental objects</h2>
+        </header>
+        <ul>
+          <li><a href="#Fundamental_objects">Object</a></li>
+          <p>The Object class represents one of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">JavaScript's data types</a>. 
+            It is used to store various keyed collections and more complex entities. Objects can be created using the <a href="https://devdocs.io/javascript/global_objects/object/object">Object()</a> 
+            constructor or the <a href="https://devdocs.io/javascript/operators/object_initializer">object initializer / literal syntax</a>.</p>
+          <li><a href="#Fundamental_objects">Function</a></li>
+          <p>Every JavaScript function is actually a <code>Function</code> object. This can be seen with the code <code>(function(){}).constructor === Function</code>, which returns true.</p>
+          <li><a href="#">Boolean</a></li>
+          <p>The <code>Boolean</code> object is an object wrapper for a boolean value.</p>
+          <h4>Examples:</h4>
+          <pre class="line-numbers">
+          <code>
+            var x = new Boolean(false);
+            if (x) {
+              // this code is executed
+            }
+            var x = false;
+            if (x) {
+              // this code is not executed
+            }
+          </code></pre>
+          <li><a href="#Fundamental_objects">Symbol</a></li>
+          <p><code>Symbol</code> is a built-in object whose constructor returns a <code>symbol</code> <a href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive">primitive</a> — also called a Symbol value or just a Symbol — that's guaranteed to be unique. 
+            Symbols are often used to add unique property keys to an object that won't collide with keys any other code might add to the object, and which are hidden from any mechanisms other code will typically use to access the object.
+             That enables a form of weak <a href="https://developer.mozilla.org/en-US/docs/Glossary/Encapsulation">encapsulation</a>, or a weak form of <a href="https://en.wikipedia.org/wiki/Information_hiding">information hiding</a>.</p>
+          <p>Every <code>Symbol()</code> call is guaranteed to return a unique Symbol. Every <code>Symbol.for("key")</code> call will always return the same Symbol for a given value of <code>"key"</code>. When <code>Symbol.for("key")</code> is called, if a Symbol with the given key can be found in the global Symbol registry, that Symbol is returned. Otherwise, a new Symbol is created, added to the global Symbol registry under the given key, and returned.</p>
+        </ul>
+      </section>
+
+
+      <section class="main-section" id="Text_processing">
+        <header class="subtitle">
+          <h2>Text processing</h2>
+        </header>
+        <ul>
+          <li><a href="#Text_processing">String</a></li>
+          <p>The <code>String</code> object is used to represent and manipulate a sequence of characters. </p>
+          <h4>Creating strings:</h4>
+          <p>Strings can be created as primitives, from string literals, or as objects, using the <a href="https://devdocs.io/javascript/global_objects/string/string">String()</a> constructor: </p>
+          <pre class="line-numbers">
+          <code>
+            const string1 = "A string primitive";
+            const string2 = 'Also a string primitive';
+            const string3 = `Yet another string primitive`;
+            const string4 = new String("A String object");
+            </code>
+            </pre>
+          <li><a href="#Text_processing">RegExp</a></li>
+          <p>The <code>RegExp</code> object is used for matching text with a pattern.</p>
+          <p>There are two ways to create a RegExp object: a literal notation and a constructor.</p>
+<ul>    <li>The literal notation's parameters are enclosed between slashes and do not use quotation marks.</li>
+<li>The constructor function's parameters are not enclosed between slashes but do use quotation marks.</li></ul>
+<p>The following three expressions create the same regular expression object:</p>
+<pre class="line-numbers">
+  <code>
+let re = /ab+c/i; // literal notation
+let re = new RegExp('ab+c', 'i') // constructor with string pattern as first argument
+let re = new RegExp(/ab+c/, 'i') // constructor with regular expression literal as first argument (Starting with ECMAScript 6)
+</code></pre>
+        </ul>
+      </section>
+
+    </main>
+<div id="footer">
+  Information obtained from <a href="https://devdocs.io/javascript/">this documentation</a>
+</div>
+  </body>
+</html>
