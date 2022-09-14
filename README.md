@@ -11,7 +11,7 @@
 
 ## Live Demo 
 
-[Technical Documentation Page](https://karlavdelgadof.github.io/Awesome-Books-w-modules/)
+[Technical Documentation Page](https://karlavdelgadof.github.io/Past-project-review/)
 
 ## Authors
 
